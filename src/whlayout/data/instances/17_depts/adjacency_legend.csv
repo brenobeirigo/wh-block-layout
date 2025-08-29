@@ -1,0 +1,6 @@
+Adjacency Priority,Meaning
+2,Very Important to Locate Near One Another
+1,Important to Locate Near One Another
+0,Unimportant
+-1,Important to Locate Away from One Another
+-2,Very Irnportant to Locate Away from One Another

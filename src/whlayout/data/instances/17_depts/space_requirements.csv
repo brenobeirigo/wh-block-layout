@@ -1,0 +1,18 @@
+Department,Planned Space (sq ft),Planned Space (sq m)
+Receiving Docks,26095.0,2425.0
+Unloading,13048.0,1213.0
+Returns Processing,15657.0,1455.0
+Receiving Staging,26095.0,2425.0
+Receiving Sorting,13048.0,1213.0
+Putaway Staging,19572.0,1819.0
+Pallet Storage,156573.0,14546.0
+Case Picking,39143.0,3637.0
+Small Parts Storage,13048.0,1213.0
+Picking Staging,19572.0,1819.0
+Picking Sortation,19572.0,1819.0
+Order Merge And Sortation,52191.0,4849.0
+Shipment Preparation,26095.0,2425.0
+Loading,13048.0,1213.0
+Shipping Docks,26095.0,2425.0
+Offices,23486.0,2182.0
+Restrooms,7829.0,728.0

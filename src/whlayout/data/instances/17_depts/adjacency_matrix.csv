@@ -1,0 +1,18 @@
+From/To,Receiving Docks,Unloading,Returns Processing,Receiving Staging,Receiving Sorting,Putaway Staging,Pallet Storage,Case Picking,Small Parts Storage,Picking Staging,Picking Sortation,Order Merge And Sortation,Shipment Preparation,Loading,Shipping Docks,Offices,Restrooms
+Receiving Docks,,2,1,2,1,1,1,1,1,-2,-2,0,-1,-1,2,0,0
+Unloading,2,,1,0,0,0,2,1,0,-2,1,2,0,2,0,0,0
+Returns Processing,2,-1,,0,2,0,2,1,0,-2,1,2,0,2,0,0,0
+Receiving Staging,2,-1,1,,2,0,2,1,0,-2,1,2,0,2,0,0,0
+Receiving Sorting,2,-1,1,0,,0,2,1,0,-2,1,2,0,-2,0,0,0
+Putaway Staging,2,-1,1,1,1,,2,1,0,-1,1,2,0,2,0,0,0
+Pallet Storage,2,-1,1,1,1,0,,1,0,-2,1,1,0,2,0,0,0
+Case Picking,2,-1,1,1,1,0,2,,0,-2,1,2,0,2,0,0,0
+Small Parts Storage,2,-1,1,2,1,0,2,-2,,-2,1,2,0,2,0,0,0
+Picking Staging,-1,-1,1,1,1,0,2,1,0,,1,2,0,2,0,0,0
+Picking Sortation,-1,-1,1,1,1,0,2,1,-1,-2,,2,0,2,0,0,0
+Order Merge And Sortation,0,-1,1,1,1,0,2,1,0,1,1,,0,2,0,0,0
+Shipment Preparation,-1,-1,1,-2,1,0,1,1,0,-2,1,2,,2,0,0,0
+Loading,-1,-1,1,1,1,0,2,1,0,-2,1,2,0,,0,0,0
+Shipping Docks,2,-1,1,1,1,0,2,1,0,-2,1,2,0,2,,0,0
+Offices,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,,0
+Restrooms,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,

@@ -27,11 +27,11 @@ if __name__ == "__main__":
                 ],
                 # Example areas in m²
                 "Planned Space (sq m)": [
-                    1000,
+                    1950,
                     1000,
                     2500,
                     2500,
-                    1000,
+                    1950,
                     100
                 ],
             }
@@ -46,12 +46,12 @@ if __name__ == "__main__":
     # Offices are to be isolated from the main flow
     df_adj_matrix = pd.DataFrame(
         {
-            "Receiving":      [np.nan,  2,  1,  0,  2,  0],
-            "Staging":        [2,     np.nan, 2,  1,  2,  0],
-            "Pallet Storage": [1,       2,  np.nan, 2,  1,  -2],
-            "Case Picking":   [0,       1,  2,  np.nan, 2,  -2],
-            "Shipping":       [2,       2,  1,  2,  np.nan, 0],
-            "Offices":        [0,       0,  -2,  -2,  0,  np.nan],
+            "Receiving":      [np.nan,  2,     1,    0,    2,    0],
+            "Staging":        [  2,   np.nan,  2,    1,    2,    0],
+            "Pallet Storage": [  1,     2,   np.nan, 2,    1,   -2],
+            "Case Picking":   [  0,     1,     2,  np.nan, 2,   -2],
+            "Shipping":       [  2,     2,     1,    2,  np.nan, 0],
+            "Offices":        [  0,     0,    -2,   -2,    0,  np.nan],
         },
         index=df_areas.index,
     )
@@ -130,10 +130,10 @@ if __name__ == "__main__":
         building_y=By,
         # layout intent
         anchors=anchors,
-        # design_skeleton=design_skeleton,
-        # pair_clearances=pair_clearances,
+        design_skeleton=design_skeleton,
+        pair_clearances=pair_clearances,
         default_clearance=0.0,    # used when a pair is not in pair_clearances
-        # fixed_departments=fixed_departments,
+        fixed_departments=fixed_departments,
         # area modeling
         area_calculation="exact",
         # solver

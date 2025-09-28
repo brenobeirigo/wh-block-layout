@@ -7,6 +7,9 @@ import itertools as it
 from typing import Dict, List, Optional, Tuple, Literal
 import pandas as pd
 
+import logging
+logger = logging.getLogger(__name__)
+
 def build_block_layout_model(
     dept_list: List[str],
     areas_m2: Dict[str, float],
@@ -34,7 +37,6 @@ def build_block_layout_model(
     mip_gap: float = 0.02,
     time_limit: Optional[int] = None,
     log_to_console: bool = True,
-    area_band_pct: float = None,
     area_calculation: Literal["exact", "envelope"] = "envelope",
     write_lp: str = "data/lp/block_layout.lp"
 ) -> Tuple[gp.Model, dict]:
@@ -142,11 +144,6 @@ def build_block_layout_model(
     def W(i: str, j: str) -> float:
         return float(weights.loc[i, j])
 
-    # Precompute sqrt(area) and perimeter guides for each department
-    sqrt_area = {i: math.sqrt(areas_m2[i]) for i in I}       # used to bound sides linearly
-    perim_min = {i: 4.0 * sqrt_area[i] for i in I}           # square perimeter: 4*sqrt(area)
-    perim_max = {i: rho_perimeter * perim_min[i] for i in I} # relaxed upper perimeter
-
     # ---------- Process fixed departments metadata ----------
     fixed_departments = fixed_departments or {}
     fixed_set = set(fixed_departments.keys())
@@ -161,7 +158,7 @@ def build_block_layout_model(
     # Booleans to decide whether to skip surrogate bounds for a given department
     width_is_fixed  = {i: (_width_fixed(fixed_departments[i])  if i in fixed_set else False) for i in I}
     height_is_fixed = {i: (_height_fixed(fixed_departments[i]) if i in fixed_set else False) for i in I}
-    skip_surrogates = {i: (width_is_fixed[i] and height_is_fixed[i]) for i in I}
+    skip_surrogates = {i: (width_is_fixed[i] and height_is_fixed[i]) for i in I} 
 
     # ---------- Create model and set solver parameters ----------
     model = gp.Model("block_layout")
@@ -215,6 +212,13 @@ def build_block_layout_model(
                 model.addQConstr(width[i] * height[i] == float(areas_m2[i]), name=f"area_exact[{i}]")
             
             else:
+
+                # Precompute sqrt(area) and perimeter guides for each department
+                sqrt_area = {i: math.sqrt(areas_m2[i]) for i in I}       # used to bound sides linearly
+                perim_min = {i: 4.0 * sqrt_area[i] for i in I}           # square perimeter: 4*sqrt(area)
+                perim_max = {i: rho_perimeter * perim_min[i] for i in I} # relaxed upper perimeter
+
+                
                 # Side bounds around sqrt(area) keep shapes reasonable without w*h = area
                 model.addConstr(width[i]  >= s_min * sqrt_area[i], name=f"width_lb[{i}]")
                 model.addConstr(width[i]  <= s_max * sqrt_area[i], name=f"width_ub[{i}]")

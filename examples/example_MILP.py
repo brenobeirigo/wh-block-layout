@@ -92,7 +92,7 @@ if __name__ == "__main__":
         use_aspect=True,
         aspect_ratio_limit=4.0,
         # solver
-        mip_gap=0.95,
+        mip_gap=0.2,
         time_limit=None,
         log_to_console=True,
         # useful for debugging

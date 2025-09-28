@@ -98,6 +98,7 @@ Sample data is provided in `src/whlayout/instances/17_depts/`:
 - pandas
 - matplotlib
 - plotly
+- PyQt6 (for interactive plots on VSCode)
 
 ## License
 

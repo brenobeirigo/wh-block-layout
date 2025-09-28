@@ -27,11 +27,11 @@ if __name__ == "__main__":
                 ],
                 # Example areas in m²
                 "Planned Space (sq m)": [
-                    1950,
+                    1000,
                     1000,
                     2500,
                     2500,
-                    1950,
+                    1000,
                     100
                 ],
             }
@@ -71,7 +71,7 @@ if __name__ == "__main__":
     # -----------------------------------------------------
     # Building size suggestion
     # -----------------------------------------------------
-    Bx, By = propose_building_sides(areas_m2, slack=1.3, aspect_ratio=1)
+    Bx, By = propose_building_sides(areas_m2, slack=1.0, aspect_ratio=1)
     print(f"\nSuggested building (Bx, By) = ({Bx}, {By})")
 
     # ----------------------------------------------------
@@ -130,10 +130,10 @@ if __name__ == "__main__":
         building_y=By,
         # layout intent
         anchors=anchors,
-        design_skeleton=design_skeleton,
-        pair_clearances=pair_clearances,
+        # design_skeleton=design_skeleton,
+        # pair_clearances=pair_clearances,
         default_clearance=0.0,    # used when a pair is not in pair_clearances
-        fixed_departments=fixed_departments,
+        # fixed_departments=fixed_departments,
         # area modeling
         area_calculation="exact",
         # solver

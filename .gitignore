@@ -2,4 +2,3 @@ __pycache__
 .venv
 *.egg-info
 data/lp
-wh-block-layout
